@@ -1,0 +1,48 @@
+site_name: RAG Project
+site_description: Documentation for implementing a RAG Framework
+site_author: Pyry Heinoja
+theme:
+  name: material
+
+
+
+
+nav:
+- Home: index.md
+- Getting Started: getting_started.md
+- Learning diary:
+  - learning_diary/research.md
+- Reference (Code API):
+  - reference/index.md
+
+plugins:
+- search
+- mkdocstrings:
+    handlers:
+      python:
+        options:
+          extensions:
+          - griffe_typingdoc
+          show_root_heading: true
+          show_if_no_docstring: true
+          inherited_members: true
+          members_order: source
+          separate_signature: true
+          unwrap_annotated: true
+          merge_init_into_class: true
+          docstring_section_style: spacy
+          signature_crossrefs: true
+          show_symbol_type_heading: true
+          show_symbol_type_toc: true
+
+- awesome-pages
+
+markdown_extensions:
+- footnotes
+- admonition
+- codehilite
+- toc:
+    permalink: true
+- pymdownx.caret
+- pymdownx.arithmatex
+- pymdownx.superfences
