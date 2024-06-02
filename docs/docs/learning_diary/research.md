@@ -8,3 +8,14 @@ There are a lot of open-source libraries for this, which I'll probably be using,
 
 From the last project I learned that good planning is an important part of any project.
 
+Possible datasets I could try RAG on:
+
+- Old School Runescape Wiki
+- KAMK Intra articles (english ones)
+- O'Reilly's textbooks
+- GitLab Handbook (https://gitlab.com/gitlab-com/content-sites/handbook)
+
+The handbook repo includes the entire GitLab handbook in .md files, and it's all formatted nicely.
+This could be a good subset to start: https://gitlab.com/gitlab-com/content-sites/handbook/-/tree/main/content/handbook/business-technology/data-team?ref_type=heads
+
+It's the handbook section of the Data team.
