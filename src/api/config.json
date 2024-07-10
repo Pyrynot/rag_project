@@ -1,0 +1,11 @@
+{
+	"host": "0.0.0.0",
+	"port": 8000,
+	"models": [
+		{
+			"model": "models/New-Dawn-Llama-3-70B-32K-v1.0-Q4_K_M.gguf",
+			"model_alias": "llama3",
+			"n_gpu_layers": -1
+		}
+	]
+}
