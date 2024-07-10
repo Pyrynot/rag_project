@@ -2,3 +2,5 @@ fastapi
 uvicorn
 sse-starlette
 llama_cpp_python 
+starlette_context
+pydantic_settings

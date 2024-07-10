@@ -6,12 +6,12 @@ WORKDIR /app
 
 # Install CMake and other necessary tools
 RUN apt-get update && \
-    apt-get install -y cmake && \
+    apt-get install -y cmake g++ && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy the current directory contents into the container at /app
-COPY ../../requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt

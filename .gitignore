@@ -2,6 +2,7 @@ data/wiki-pages
 data/wiki-pages-md
 wiki
 /data
+models
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
