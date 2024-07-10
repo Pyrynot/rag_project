@@ -1,36 +1,29 @@
+
+
+ARG CUDA_IMAGE="12.5.0-devel-ubuntu22.04"
 # Use an official Python runtime as a parent image
 FROM nvidia/cuda:12.5.0-base-ubuntu22.04
+# We need to set the host to 0.0.0.0 to allow outside access
+ENV HOST 0.0.0.0
 
-# Set the working directory in the container
-WORKDIR /app
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get install -y git build-essential \
+    python3 python3-pip gcc wget \
+    ocl-icd-opencl-dev opencl-headers clinfo \
+    libclblast-dev libopenblas-dev \
+    && mkdir -p /etc/OpenCL/vendors && echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
-# Install CMake and other necessary tools
-RUN apt-get update && \
-    apt-get install -y cmake g++ python3 pip nvidia-cuda-toolkit && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+COPY . .
 
-# Copy requirements.txt first to leverage Docker cache
-COPY requirements.txt /app/requirements.txt
+# setting build related env vars
+ENV CUDA_DOCKER_ARCH=all
+ENV LLAMA_CUBLAS=1
 
-ENV CMAKE_ARGS="-DLLAMA_CUBLAS=on"
-ENV FORCE_CMAKE=1
+# Install depencencies
+RUN python3 -m pip install --upgrade pip pytest cmake scikit-build setuptools fastapi uvicorn sse-starlette pydantic-settings starlette-context
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Install llama-cpp-python (build with cuda)
+RUN CMAKE_ARGS="-DLLAMA_CUBLAS=on" pip install llama-cpp-python
 
-RUN CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install llama-cpp-python
-
-# Copy the source code into the container
-COPY . /app
-
-# Make port 8000 available to the world outside this container
-EXPOSE 8000
-
-# Define environment variables
-ENV HOST=0.0.0.0
-ENV PORT=8000
-#ENV CONFIG_FILE=config.json
-
-# Run uvicorn server
-CMD ["python3", "-m", "llama_cpp.server", "--n_gpu_layers", "-1"]
+# Run the server
+CMD python3 -m llama_cpp.server
