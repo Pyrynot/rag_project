@@ -13,8 +13,13 @@ RUN apt-get update && \
 # Copy requirements.txt first to leverage Docker cache
 COPY requirements.txt /app/requirements.txt
 
+ENV CMAKE_ARGS="-DLLAMA_CUBLAS=on"
+ENV FORCE_CMAKE=1
+
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+
+RUN CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install llama-cpp-python
 
 # Copy the source code into the container
 COPY . /app
