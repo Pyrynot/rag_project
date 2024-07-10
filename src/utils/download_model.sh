@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to the virtual environment
-VENV_PATH="/home/poromies/.env"
+VENV_PATH="/home/poromies/new_env"
 
 # Path to the destination directory
 DEST_DIR="/home/poromies/models"
@@ -20,7 +20,7 @@ mkdir -p "$DEST_DIR"
 
 # Download the model
 echo "Downloading model from Hugging Face..."
-huggingface-cli download "$MODEL_NAME" --include "$INCLUDE_FILE" --local-dir "$DEST_DIR"
+huggingface-cli download "$MODEL_NAME" --include "$INCLUDE_FILE" --local-dir "$DEST_DIR" --local-dir-use-symlinks False
 
 # Check if the download was successful
 if [ $? -eq 0 ]; then
