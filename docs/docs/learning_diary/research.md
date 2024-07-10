@@ -68,3 +68,10 @@ It essentially automates the creation of synthetic datasets for finetuning langu
 - release that as open source on huggingface
 - figure out finetuning, which might take A LONG TIME. I don't know if I can finetune the 70B models with the 48Gb VRAM limit that I have
 - try different finetuning approaches, and benchmark all of them
+
+## 10.07
+
+I was really contemplating just using a library for this, but in the end I decided to go with kind of a similar method than in my previous project, which is just a self-hosted FastAPI server with the model, however I'm going to keep it a lot simpler this time.
+
+Good write-up on quants: https://gist.github.com/Artefact2/b5f810600771265fc1e39442288e8ec9
+
