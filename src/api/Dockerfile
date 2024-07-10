@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy the current directory contents into the container at /app
+# Copy requirements.txt first to leverage Docker cache
 COPY requirements.txt /app/requirements.txt
 
 # Install any needed packages specified in requirements.txt
