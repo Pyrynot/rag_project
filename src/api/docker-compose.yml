@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL=home/poromies/models/New-Dawn-Llama-3-70B-32K-v1.0-Q4_K_M.gguf
+      - HOST=0.0.0.0
+      - PORT=8000
+    volumes:
+      - ./models:/models  # Ensure your model files are accessible in the container
