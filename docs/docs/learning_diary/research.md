@@ -74,4 +74,5 @@ It essentially automates the creation of synthetic datasets for finetuning langu
 I was really contemplating just using a library for this, but in the end I decided to go with kind of a similar method than in my previous project, which is just a self-hosted FastAPI server with the model, however I'm going to keep it a lot simpler this time.
 
 Good write-up on quants: https://gist.github.com/Artefact2/b5f810600771265fc1e39442288e8ec9
+BEST resource on quantization I've ever come across: https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization
 
