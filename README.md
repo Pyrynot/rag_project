@@ -8,7 +8,7 @@ This repo is for my summer project, where I'll be taking a look at the performan
 
 - **OSRS Wiki Scraping**: Successfully scraped the entire OSRS wiki (approximately 29,000 pages) using a modified [parsed-osrs](https://github.com/Flipping-Utilities/parsed-osrs) tool. The data was scraped in HTML format to preserve dynamically rendered tables, which would otherwise be lost if scraped via the MediaWiki API. 
   
-- **Data Conversion**: Converted the scraped HTML/WikiText pages to Markdown format, ensuring the data is more accessible and easier to manipulate for downstream tasks. For an example, go look [at raw pages](./data-example-wiki-pages), and compare them [to converted pages](./data-example-wiki-pages-md)
+- **Data Conversion**: Converted the scraped HTML/WikiText pages to Markdown format, ensuring the data is more accessible and easier to manipulate for downstream tasks. For an example, go look [at raw pages](./data-example/wiki-pages), and compare them [to converted pages](./data-example/wiki-pages-md)
   
 - **Project Planning**: Made a project plan for the remainder of the project:
 
